@@ -1,0 +1,60 @@
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul class="nav navbar-nav">
+      <li class="dropdown active">
+          <a class="dropdown-toggle" data-toggle="dropdown">Assets</a>
+          <ul class="dropdown-menu scrollable-menu">
+            
+            <li><a [routerLink]="['/Patient_profile']">Patient_profile</a></li>
+            
+            <li><a [routerLink]="['/Doctor_profile']">Doctor_profile</a></li>
+            
+            <li><a [routerLink]="['/Patient']">Patient</a></li>
+            
+            <li><a [routerLink]="['/Medical_Record']">Medical_Record</a></li>
+            
+          </ul>
+      </li>
+      <li class="dropdown active">
+        <a class="dropdown-toggle" data-toggle="dropdown">Participants</a>
+        <ul class="dropdown-menu scrollable-menu">
+          
+          <li><a [routerLink]="['/Doctor']">Doctor</a></li>
+          
+        </ul>
+    </li>
+    <li class="dropdown active">
+      <a class="dropdown-toggle" data-toggle="dropdown">Transactions</a>
+      <ul class="dropdown-menu scrollable-menu">
+        
+        <li><a [routerLink]="['/UpdateRecord']">UpdateRecord</a></li>
+        
+        <li><a [routerLink]="['/AllowOtherDoctorsRead']">AllowOtherDoctorsRead</a></li>
+        
+        <li><a [routerLink]="['/AllowAdoctorWrite']">AllowAdoctorWrite</a></li>
+        
+      </ul>
+  </li>
+    </ul>
+  </div>
+  
+  <!-- Use any element to open the sidenav -->
+  <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; Menu</span>
+  
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <div id="main">
+    <router-outlet></router-outlet>
+  </div>

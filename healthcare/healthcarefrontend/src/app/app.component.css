@@ -1,0 +1,195 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/*.container-fluid {
+    display: grid;
+    margin-left: 72px;
+    padding-left: 0px;
+}
+
+.navbar {
+    border-radius: 0px;
+    background: rgb(0, 0, 0);
+    border: none;
+    margin: 10px;
+}
+
+.navbar-header {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.navbar-brand {
+    height: 100%;
+    font-size: 32px;
+    letter-spacing: 0.28px;
+    padding: 0px;
+    margin-left: 0px !important;
+    color: #000;
+}
+
+.navbar-brand:hover {
+    color: #000;
+}
+
+.network-name {
+    font-size: 12px;
+    letter-spacing: 0.28px;
+    color: #5D636A;
+}
+
+.navbar-nav > li {
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.navbar-nav > a {
+    font-size: 14px;
+    color: #343C41;
+    letter-spacing: 0.2px;
+}
+
+.navbar-nav > li:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.navbar-nav > li > a {
+    color: #000;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.navbar-nav > li > .active:hover > a {
+    color: #6C4CC4 !important;
+}
+
+.navbar-nav > li:hover > a {
+    color: #000;
+}
+
+.navbar-nav .active > a {
+    background-color: #fff;
+    color: #6C4CC4 !important;
+}
+
+.dropdown-menu {
+    border-radius: 0px;
+    border: none;
+    padding: 0px;
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.10);
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.dropdown-menu:hover {
+    visibility: visible;
+}
+
+.dropdown-menu > li > a {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #343C41;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+}
+
+.dropdown-menu > li:hover > a {
+    background-color: rgb(230, 214, 255);
+}
+
+.dropdown-menu > li:focus > a {
+    background-color: #F3ECFE;
+}
+
+.dropdown-menu > li > a:visited {
+    background-color: #F3ECFE;
+}
+
+.dropdown-menu > li > a:active {
+    background-color: #F3ECFE;
+}
+.dropdown-menu > li > a:focus {
+    background-color: #F3ECFE;
+}
+.dropdown-menu > li > a:visited {
+    background-color: #F3ECFE;
+}
+
+.dropdown:hover .dropdown-menu {
+    visibility: visible;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+*/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav ul li {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav li:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav ul li {font-size: 18px;}
+  }
