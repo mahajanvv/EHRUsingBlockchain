@@ -59,7 +59,7 @@ Yeoman is a tool for generating applications, which utilises generator-hyperledg
 npm install -g yo
 ```
 
-# Congratulations your almost done with all development environment
+### Cheers! all development environment setup is done.
 
 ## Now, clone or download this repository and with some few commands you can work with this application
 
@@ -103,7 +103,7 @@ composer card import --file networkadmin.card
 composer network ping --card admin@tutorial-network
 ```
 
-# Step 3:(Generating a REST server)
+## Step 3:(Generating a REST server)
 Hyperledger Composer can generate a bespoke REST API based on a business network. For developing a web application, the REST API provides a useful layer of language-neutral abstraction.
 
 1. To create the REST API, navigate to the tutorial-network directory and run the following command:
@@ -120,8 +120,8 @@ composer-rest-server
 
 6. Select **No** when asked whether to enable TLS security.
 
-# Congratulations network is started and you can work with it.
+## Congratulations network is started and you can work with it.
 Use any browser u like and goto url:
 http://localhost:3000/explorer/
 
-# Step 4:(Angular Application is in development phase very soon it will be available to you)
+## Step 4:(Angular Application is in development phase very soon it will be available to you)
