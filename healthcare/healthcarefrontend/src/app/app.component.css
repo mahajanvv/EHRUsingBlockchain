@@ -11,7 +11,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*.container-fluid {
+ /*
+.container-fluid {
     display: grid;
     margin-left: 72px;
     padding-left: 0px;
@@ -59,10 +60,6 @@
     letter-spacing: 0.2px;
 }
 
-.navbar-nav > li:hover {
-    background-color: #fff;
-    color: #000;
-}
 
 .navbar-nav > li > a {
     color: #000;
@@ -70,18 +67,7 @@
     font-weight: bold;
 }
 
-.navbar-nav > li > .active:hover > a {
-    color: #6C4CC4 !important;
-}
 
-.navbar-nav > li:hover > a {
-    color: #000;
-}
-
-.navbar-nav .active > a {
-    background-color: #fff;
-    color: #6C4CC4 !important;
-}
 
 .dropdown-menu {
     border-radius: 0px;
@@ -92,13 +78,14 @@
     display: block;
     overflow: hidden;
     visibility: hidden;
-
+    
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
+
 
 .dropdown-menu:hover {
     visibility: visible;
@@ -107,31 +94,31 @@
 .dropdown-menu > li > a {
     padding: 6px 12px;
     font-size: 14px;
-    color: #343C41;
+    color: white;
     letter-spacing: 0.2px;
     line-height: 30px;
 }
 
 .dropdown-menu > li:hover > a {
-    background-color: rgb(230, 214, 255);
+    background-color: black;
 }
 
 .dropdown-menu > li:focus > a {
-    background-color: #F3ECFE;
+    background-color: black;
 }
 
 .dropdown-menu > li > a:visited {
-    background-color: #F3ECFE;
+    background-color: black;
 }
 
 .dropdown-menu > li > a:active {
-    background-color: #F3ECFE;
+    background-color: black;
 }
 .dropdown-menu > li > a:focus {
-    background-color: #F3ECFE;
+    background-color: black;
 }
 .dropdown-menu > li > a:visited {
-    background-color: #F3ECFE;
+    background-color: black;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -143,7 +130,53 @@
     max-height: 200px;
     overflow-x: hidden;
 }
+
+.dropdown-menu > li > a {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: white;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    
+}
+
+
+
+.dropdown-menu > li:hover > a {
+    background-color: black;
+    color: white;
+}
+
+.dropdown-menu > li:focus > a {
+    background-color: black;
+    color: white;
+}
 */
+
+
+.navbar-nav > li > .active:hover > a {
+    color: white !important;
+}
+
+.navbar-nav > li:hover > a {
+    color: #000;
+}
+
+.navbar-nav .active > a {
+    background-color: black;
+    color: white !important;
+}
+
+
+.navbar-nav > li:hover {
+    background-color: black;
+    color: white;
+}
+
+
+a{
+    color: white;
+}
 
 .sidenav {
     height: 100%; /* 100% Full-height */
@@ -152,7 +185,7 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: black; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -163,14 +196,16 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: black;
+    background-color: black;
     display: block;
     transition: 0.3s;
   }
   
   /* When you mouse over the navigation links, change their color */
   .sidenav li:hover {
-    color: #f1f1f1;
+    color: black;
+    background-color: black;
   }
   
   /* Position and style the close button (top right corner) */
@@ -186,6 +221,7 @@
   #main {
     transition: margin-left .5s;
     padding: 20px;
+    background-color: black;
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
