@@ -69,7 +69,7 @@ npm install -g yo
 The first time you start up a new runtime, you'll need to run the start script, then generate a PeerAdmin card:
 ```
 cd ~/EHRUsingBlockchain
-export FABRIC_VERSION=hlfv11
+export FABRIC_VERSION=hlfv12
 ./downloadFabric.sh
 ./startFabric.sh
 ./createPeerAdminCard.sh
