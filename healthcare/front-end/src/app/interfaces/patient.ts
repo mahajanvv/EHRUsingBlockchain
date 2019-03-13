@@ -1,6 +1,10 @@
-export interface doctorID{
-    $class : string,
-    DoctorId : string
+
+export interface Patient{
+    $class: string,
+    PatientId: string,
+    authorized: string[],
+    gender: string,
+    age: string
 }
 
 export interface Address{
@@ -13,15 +17,13 @@ export interface Address{
     PinCode: string
 }
 
-export interface DoctorProfile{
-    $class : string,
+export interface PatientProfile{
+    $class: string,
     profile_id: string,
-    Doctor: doctorID,
+    Patient: Patient,
     firstName: string,
     lastName: string,
     EmailAddress: string,
     Dob: number,
-    Qualifications: string[],
-    ImageURL: string,
-    address : Address
+    address: Address
 }

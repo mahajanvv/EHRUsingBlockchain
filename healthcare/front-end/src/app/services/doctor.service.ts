@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { doctorID } from '../interfaces/doctor';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { doctorID, DoctorProfile, Address } from '../interfaces/doctor';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,11 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class DoctorService {
 
-  private _url : string = "http://localhost:3000/api/Doctor";
+  private doctorIDURL : string = "http://localhost:3000/api/Doctor";
+  private doctorProfileURL : string = "http://localhost:3000/api/Doctor_profile"
 
   constructor(private http: HttpClient) { }
 
   getAllDoctorIDs(): Observable<doctorID[]>{
-    return this.http.get<doctorID[]>(this._url);
+    return this.http.get<doctorID[]>(this.doctorIDURL);
+  }
+  getAllDoctorProfile(): Observable<DoctorProfile[]>{
+    return this.http.get<DoctorProfile[]>(this.doctorProfileURL,{params:new HttpParams().set('filter',JSON.stringify({include:'resolve'}))});
+  }
+  getDoctorProfileByID(id : string):Observable<DoctorProfile>{
+    return this.http.get<DoctorProfile>(this.doctorProfileURL+"/"+id, 
+    {params:new HttpParams().set('filter',JSON.stringify({include:'resolve'}))});
   }
 }

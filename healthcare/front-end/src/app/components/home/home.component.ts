@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this._doctorservice.getAllDoctorIDs().subscribe(data => console.log(data));
+    this._doctorservice.getDoctorProfileByID("Kapil Bhalotia").subscribe(data=> console.log(data));
   }
 
 }
