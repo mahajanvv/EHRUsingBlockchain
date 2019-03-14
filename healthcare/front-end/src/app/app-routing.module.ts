@@ -9,10 +9,14 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 
 const routes: Routes = [
   { path : '', component:HomeComponent},
-  { path : 'doctor', component: DoctorComponent},
-  { path : 'patient', component:PatientComponent},
-  { path : 'doctor/profile', component:DoctorprofileComponent},
-  { path : 'patient/profile', component:PatientprofileComponent},
+  { path : 'doctor', component: DoctorComponent,
+  children : [
+    {path : 'profile', component:DoctorprofileComponent}
+  ]},
+  { path : 'patient', component:PatientComponent, 
+  children : [
+    {path: 'profile', component : PatientprofileComponent}
+  ]},
   { path : '**', component:PagenotfoundComponent}
 ];
 
