@@ -7,10 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front-end';
-  showFiller = false;
-  toggle = true;
-  ontoggle(drawer){
-    this.toggle = !this.toggle;
-    drawer.toggle();
-  }
+  
 }

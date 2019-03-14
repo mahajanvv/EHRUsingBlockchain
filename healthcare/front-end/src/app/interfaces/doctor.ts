@@ -25,3 +25,11 @@ export interface DoctorProfile{
     ImageURL: string,
     address : Address
 }
+
+export class DoctorID implements doctorID{
+    $class : string = "org.example.healthcare.Doctor";
+    DoctorId : string;
+    constructor(doc:string){
+        this.DoctorId = doc;
+    }
+}

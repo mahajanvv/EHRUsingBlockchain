@@ -23,4 +23,8 @@ export class DoctorService {
     return this.http.get<DoctorProfile>(this.doctorProfileURL+"/"+id, 
     {params:new HttpParams().set('filter',JSON.stringify({include:'resolve'}))});
   }
+
+  addnewDoctor(DoctorID : doctorID): Observable<doctorID>{
+      return this.http.post<doctorID>(this.doctorIDURL, DoctorID);
+  }
 }

@@ -1,21 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <button id="close" (click)="ontoggle(drawer)" mat-button type="button"><mat-icon>close</mat-icon></button>
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
-
-  <div class="example-sidenav-content">
-   <button *ngIf="toggle" type="button" id="menu" mat-button (click)="ontoggle(drawer)"> <mat-icon>menu</mat-icon>
-      Menu
-    </button>
-  </div>
-  <router-outlet></router-outlet>
-</mat-drawer-container>
+<router-outlet></router-outlet>
 
 
 
