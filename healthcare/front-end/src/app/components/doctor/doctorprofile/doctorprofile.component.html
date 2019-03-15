@@ -1,20 +1,96 @@
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>FirstName</mat-label>
-    <input matInput placeholder="FirstName">
-    <mat-icon matSuffix>person</mat-icon>
-    <!--<mat-hint>FirstName</mat-hint>-->
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>LastName</mat-label>
-    <input matInput placeholder="LastName">
-    <mat-icon matSuffix>person</mat-icon>
-    <!--<mat-hint>FirstName</mat-hint>-->
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>PhoneNumber</mat-label>
-    <input matInput placeholder="PhoneNumber">
-    <mat-icon matSuffix>phone</mat-icon>
-    <!--<mat-hint>FirstName</mat-hint>-->
-  </mat-form-field>
-</p>
+<form class="example-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<div class="row" style="margin-top:3%;">
+    <div class="col">
+        <mat-card class="example-card">
+            <img mat-card-image class="mx-auto d-block rounded-circle" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <h3>Your ID:</h3>
+            </mat-card-content>
+            
+          </mat-card>
+    </div>
+    <div class="col">
+            <mat-form-field appearance="outline" class="example-half-width">
+              <mat-label>FirstName</mat-label>
+              <input matInput placeholder="FirstName" form formControlName="firstName">
+              <mat-icon matSuffix>person</mat-icon>
+            <!--<mat-hint>FirstName</mat-hint>-->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-half-width">
+              <mat-label>LastName</mat-label>
+              <input matInput placeholder="LastName" formControlName="lastName">
+              <mat-icon matSuffix>person</mat-icon>
+            <!--<mat-hint>FirstName</mat-hint>-->
+            </mat-form-field>      
+            <mat-form-field appearance="outline" class="example-half-width">
+              <mat-label>PhoneNumber</mat-label>
+              <input matInput placeholder="PhoneNumber">
+              <mat-icon matSuffix>phone</mat-icon>
+              <!--<mat-hint>FirstName</mat-hint>-->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>Date of birth</mat-label>
+                <input matInput placeholder="DOB" formControlName="Dob">
+                <mat-icon matSuffix>today</mat-icon>
+                <!--<mat-hint>FirstName</mat-hint>-->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Email Address" formControlName="EmailAddress">
+                <mat-icon matSuffix>email</mat-icon>
+                <!--<mat-hint>FirstName</mat-hint>-->
+            </mat-form-field>
+            <!--<mat-form-field>
+                <mat-select placeholder="Toppings"  multiple>
+                    <mat-select-trigger>
+                    {{toppings.value ? toppings.value[0] : ''}}
+                    <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+                    (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            -->
+            <button id="save" mat-raised-button color="primary"><mat-icon>save</mat-icon> SAVE </button>
+                    
+    </div>
+    <div class="col" formGroupName="address">
+        <button id="save" mat-raised-button color="primary"><mat-icon>save</mat-icon> SAVE </button>
+        <h3>Your Address:</h3>
+        <mat-form-field appearance="outline" class="example-half-width">
+            <mat-label>house/cabin number</mat-label>
+            <input matInput placeholder="house/cabin number" formControlName="number">
+            <mat-icon matSuffix>location_city</mat-icon>
+            <!--<mat-hint>FirstName</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-half-width">
+            <mat-label>Street</mat-label>
+            <input matInput placeholder="Street" formControlName="street">
+            <mat-icon matSuffix>location_city</mat-icon>
+            <!--<mat-hint>FirstName</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-half-width">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="City" formControlName="city">
+            <mat-icon matSuffix>location_city</mat-icon>
+            <!--<mat-hint>FirstName</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-half-width">
+            <mat-label>Country</mat-label>
+            <input matInput placeholder="Country" formControlName="country">
+            <mat-icon matSuffix>location_city</mat-icon>
+            <!--<mat-hint>FirstName</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-half-width">
+            <mat-label>Pincode</mat-label>
+            <input matInput placeholder="Pincode" formControlName="PinCode">
+            <mat-icon matSuffix>location_city</mat-icon>
+            <!--<mat-hint>FirstName</mat-hint>-->
+        </mat-form-field>
+    </div>
+</div>
+</form>
+
+
+  

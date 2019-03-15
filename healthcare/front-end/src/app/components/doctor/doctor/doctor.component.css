@@ -28,4 +28,11 @@
     margin: 10px;   
   }
 
-  
+  .mat-drawer{
+    background-color: #5416B4;
+    color: rgba(255,255,255,.87);
+    }
+
+  .mat-list-item{
+    color: rgba(255,255,255,.87);
+  }
