@@ -12,16 +12,24 @@ export class DoctorprofileComponent implements OnInit {
   
   private doctorid : DoctorID;
 
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  qualificationsList : string [] = ['Doctor of Medicine by research (MD(Res), DM)',
+'Doctor of Philosophy (PhD, DPhil)', 'Master of Clinical Medicine (MCM)',
+'Master of Medical Science (MMSc, MMedSc)', 'Master of Medicine (MM, MMed)',
+'Master of Philosophy (MPhil)', 'Master of Surgery (MS, MSurg, MChir, MCh, ChM, CM)',
+'Master of Science in Medicine or Surgery (MSc)', 'Doctor of Clinical Medicine (DCM)',
+'Doctor of Clinical Surgery (DClinSurg)', 'Doctor of Medical Science (DMSc, DMedSc)', 
+'Doctor of Surgery (DS, DSurg)'];
+
+  
 
   profileForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     EmailAddress: new FormControl(''),
+    Qualifications : new FormControl(),
     Dob: new FormControl(''),
-    Qualifications: new FormControl(''),
     address: new FormGroup({
-      number: new FormControl(''),
+      number: new FormControl(),
       street: new FormControl(''),
       city: new FormControl(''),
       country: new FormControl(''),
@@ -33,7 +41,10 @@ export class DoctorprofileComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.profileForm.patchValue({firstName:"Wayne", lastName : "Mahajan"});
+    this.profileForm.patchValue({firstName:"Wayne", lastName : "Mahajan",
+   Qualifications: ['Doctor of Medicine by research (MD(Res), DM)',
+   'Doctor of Philosophy (PhD, DPhil)', 'Master of Clinical Medicine (MCM)']});
+    console.log(this.profileForm.value['Qualifications']) ;
   }
   ontoggle(drawer){
     drawer.toggle();

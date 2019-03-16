@@ -1,7 +1,7 @@
 <form class="example-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 <div class="row" style="margin-top:3%;">
     <div class="col">
-        <mat-card class="example-card">
+        <mat-card class="example-card" style="width:400px;height:500px;">
             <img mat-card-image class="mx-auto d-block rounded-circle" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
               <h3>Your ID:</h3>
@@ -40,24 +40,25 @@
                 <mat-icon matSuffix>email</mat-icon>
                 <!--<mat-hint>FirstName</mat-hint>-->
             </mat-form-field>
-            <!--<mat-form-field>
-                <mat-select placeholder="Toppings"  multiple>
-                    <mat-select-trigger>
-                    {{toppings.value ? toppings.value[0] : ''}}
-                    <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-                    (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+            <mat-form-field>
+                <mat-select placeholder="Qualifications" formControlName="Qualifications"  multiple>
+                    <!--<mat-select-trigger>
+                    {{Qualifications.value ? Qualifications.value[0] : ''}}
+                    <span *ngIf="Qualifications.value?.length > 1" class="example-additional-selection">
+                    (+{{Qualifications.value.length - 1}} {{Qualifications.value?.length === 2 ? 'other' : 'others'}})
                     </span>
-                </mat-select-trigger>
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select-trigger>-->
+                <mat-option *ngFor="let qualification of qualificationsList" [value]="qualification">{{qualification}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            -->
+            
             <button id="save" mat-raised-button color="primary"><mat-icon>save</mat-icon> SAVE </button>
                     
     </div>
     <div class="col" formGroupName="address">
         <button id="save" mat-raised-button color="primary"><mat-icon>save</mat-icon> SAVE </button>
-        <h3>Your Address:</h3>
+        <mat-divider></mat-divider>
+        <h4 mat-subheader>Your Address:</h4>
         <mat-form-field appearance="outline" class="example-half-width">
             <mat-label>house/cabin number</mat-label>
             <input matInput placeholder="house/cabin number" formControlName="number">
