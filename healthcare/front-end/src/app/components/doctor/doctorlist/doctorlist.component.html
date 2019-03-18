@@ -1,54 +1,37 @@
 <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
       
     </div>
     <div class="col-sm-8">
-      <mat-grid-list cols="1" rowHeight="10:1">
-        <mat-grid-tile>
-            <mat-card class="example-card">
+      <mat-grid-list cols="1" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let doctor of doctorslist">
+            <mat-card class="example-card" >
               <mat-card-header>
-                  
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Name : Dr. {{doctor.firstName+" "+doctor.lastName}}</mat-card-title>
+                <mat-card-subtitle>DoctorId : {{doctor.Doctor.DoctorId}}</mat-card-subtitle>
+                <mat-card-subtitle>Email Address : {{doctor.EmailAddress}}</mat-card-subtitle>
+                <mat-card-subtitle>Date of birth : {{doctor.Dob}}</mat-card-subtitle>
               </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <mat-list dense>Qualifications:
+                  <mat-list-item *ngFor="let qualification of doctor.Qualifications">
+                      {{qualification}}
+                  </mat-list-item>
+                </mat-list>
+                <mat-divider></mat-divider>
+                  <p>
+                    Address : {{doctor.address.number+", "+doctor.address.street+", "+
+                                doctor.address.city+", "+doctor.address.country+", " +
+                                doctor.address.PinCode}}.
+                  </p>
+              </mat-card-content>
             </mat-card>
         </mat-grid-tile>
       </mat-grid-list>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       
     </div>
   </div>

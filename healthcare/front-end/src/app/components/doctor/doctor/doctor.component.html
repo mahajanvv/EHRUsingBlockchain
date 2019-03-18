@@ -1,6 +1,7 @@
 <mat-drawer-container class="example-container" autosize >
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <!--<mat-icon id="close" (click)="ontoggle(drawer)">close</mat-icon>-->
+      <mat-toolbar color="primary">Menu</mat-toolbar>
         <mat-nav-list>
           <mat-list-item routerLink="/">
                 <mat-icon>home</mat-icon> Home
@@ -28,11 +29,14 @@
           </mat-list-item>
         </mat-nav-list>
   </mat-drawer>
-
-  <div class="example-sidenav-content">
-   <button  type="button" id="menu" mat-fab color="primary" (click)="ontoggle(drawer)"> <mat-icon>menu</mat-icon></button>
+  <mat-toolbar style="position:fixed;z-index:2;" color="primary"><div class="example-sidenav-content">
+    <button  type="button" id="menu" mat-icon-button (click)="ontoggle(drawer)"> <mat-icon>menu</mat-icon></button>
+   </div> 
+  <span>DOC-PAT</span></mat-toolbar>
+  <div style="padding-top:4em;padding-bottom:4em;">
+    <router-outlet></router-outlet>
   </div>
-  <router-outlet></router-outlet>
+  
   
 </mat-drawer-container>
 

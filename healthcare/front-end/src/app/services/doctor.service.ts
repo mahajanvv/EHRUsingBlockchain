@@ -10,8 +10,17 @@ export class DoctorService {
 
   private doctorIDURL : string = "http://localhost:3000/api/Doctor";
   private doctorProfileURL : string = "http://localhost:3000/api/Doctor_profile"
+  private username : string;
 
   constructor(private http: HttpClient) { }
+
+  setUserName(name : string){
+    this.username = name;
+  }
+
+  getUserName(){
+    return this.username;
+  }
 
   getAllDoctorIDs(): Observable<doctorID[]>{
     return this.http.get<doctorID[]>(this.doctorIDURL);

@@ -1,12 +1,16 @@
 <form class="example-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-<div class="row" style="margin-top:3%;">
+<div class="row">
     <div class="col">
         <mat-card class="example-card" style="width:400px;height:500px;">
-            <img mat-card-image class="mx-auto d-block rounded-circle" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <img mat-card-image class="mx-auto d-block rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBshi_KRgxaUnlwmEFklw7Jyox0vqpbcOiqldGpK6qqQ96rHxY" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <h3>Your ID:</h3>
+              <h3>Your ID:{{doctorProfile.profile_id}}</h3>
             </mat-card-content>
-            
+            <mat-list dense>Qualifications
+                <mat-list-item *ngFor="let qualifi of doctorProfile.Qualifications">
+                    {{qualifi}}
+                </mat-list-item>
+            </mat-list>
           </mat-card>
     </div>
     <div class="col">
