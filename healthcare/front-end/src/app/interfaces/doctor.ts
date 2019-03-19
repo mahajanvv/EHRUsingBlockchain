@@ -34,6 +34,11 @@ export class AddressClass implements Address{
     country: string;
     PinCode: string;
     constructor(number: string, street: string, city: string, country: string, PinCode: string){
+        this.number = number;
+        this.street = street;
+        this.city = city;
+        this.country = country;
+        this.PinCode = PinCode;
     }
 }
 
@@ -44,10 +49,10 @@ export class DoctorID implements doctorID{
         this.DoctorId = doc;
     }
 }
-export class DoctorProfileClass implements DoctorProfile{
+export class DoctorProfileClass{
     $class : string = "org.example.healthcare.Doctor_profile";
     profile_id: string;
-    Doctor: doctorID;
+    Doctor: string;
     firstName: string;
     lastName: string;
     EmailAddress: string;
@@ -55,7 +60,7 @@ export class DoctorProfileClass implements DoctorProfile{
     Qualifications: string[];
     ImageURL: string;
     address : Address;
-    constructor(profile_id: string, Doctor: doctorID, firstName: string, 
+    constructor(profile_id: string, Doctor: string, firstName: string, 
         lastName: string, EmailAddress: string,Dob: number, Qualifications: string[],
         ImageURL: string, address : Address){
             this.profile_id = profile_id;

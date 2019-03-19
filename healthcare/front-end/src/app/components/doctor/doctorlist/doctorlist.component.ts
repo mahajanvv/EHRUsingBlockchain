@@ -18,7 +18,7 @@ export class DoctorlistComponent implements OnInit {
     this.doctorService.getAllDoctorProfile().subscribe(data =>{
       this.doctorslist = data;
       console.log(this.doctorslist);
-    });
+    },error => {console.log(error)});
   }
 
 }

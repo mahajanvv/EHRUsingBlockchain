@@ -41,7 +41,7 @@ export class DoctorprofileComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.doctorService.getDoctorProfileByID("Tejas Varade").subscribe(data => {
+    this.doctorService.getDoctorProfileByID("Vinit Mahajan").subscribe(data => {
       this.profileForm.patchValue(data);
       this.doctorProfile = data;
       console.log(this.doctorProfile);
@@ -57,7 +57,6 @@ export class DoctorprofileComponent implements OnInit {
   }
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    this.doctorProfile = this.profileForm.value;
-    console.log(this.doctorProfile);
+    
   }
 }

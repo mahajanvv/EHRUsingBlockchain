@@ -1,8 +1,8 @@
 <form class="example-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 <div class="row">
     <div class="col">
-        <mat-card class="example-card" style="width:400px;height:500px;">
-            <img mat-card-image class="mx-auto d-block rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBshi_KRgxaUnlwmEFklw7Jyox0vqpbcOiqldGpK6qqQ96rHxY" alt="Photo of a Shiba Inu">
+        <mat-card class="example-card" style="width:400px;">
+            <img mat-card-image class="mx-auto d-block rounded-circle" [src]="doctorProfile.ImageURL" alt="Photo of a Shiba Inu">
             <mat-card-content>
               <h3>Your ID:{{doctorProfile.profile_id}}</h3>
             </mat-card-content>
