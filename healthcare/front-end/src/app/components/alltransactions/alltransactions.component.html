@@ -1,54 +1,19 @@
 <div class="row">
-  <div class="col-sm-2">
+  <div class="col-sm-1">
     
   </div>
   <div class="col-sm-8">
-    <mat-grid-list cols="1" rowHeight="10:1">
-      <mat-grid-tile>
-          <mat-card class="example-card">
-            <mat-card-header>
-                
-            </mat-card-header>
-          </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <mat-card class="example-card">
-            <mat-card-header>
-                
-            </mat-card-header>
-          </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <mat-card class="example-card">
-            <mat-card-header>
-                
-            </mat-card-header>
-          </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <mat-card class="example-card">
-            <mat-card-header>
-                
-            </mat-card-header>
-          </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <mat-card class="example-card">
-            <mat-card-header>
-                
-            </mat-card-header>
-          </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <mat-card class="example-card">
-            <mat-card-header>
-                
-            </mat-card-header>
+    <mat-grid-list cols="4" rowHeight="3:4">
+      <mat-grid-tile *ngFor="let transactions of transactionslist" colspan="4">
+          <mat-card class="example-card" >
+            <mat-card-content>
+                <pre>{{transactions | json}}</pre>
+            </mat-card-content>
           </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
     
   </div>
 </div>

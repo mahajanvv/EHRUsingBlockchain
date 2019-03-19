@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { DoctorProfile} from '../../../interfaces/doctor';
+import { DoctorProfile, DoctorProfileClass, AddressClass} from '../../../interfaces/doctor';
 import { DoctorService } from '../../../services/doctor.service';
 
 @Component({
@@ -58,5 +58,20 @@ export class DoctorprofileComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     
+    this.doctorService.updateDoctorProfile(this.doctorProfile.profile_id, 
+      new DoctorProfileClass(this.doctorProfile.profile_id,"resource:org.example.healthcare.Doctor#"
+      +this.doctorProfile.profile_id,this.profileForm.get('firstName').value,
+      this.profileForm.get('lastName').value,this.profileForm.get('EmailAddress').value,
+      +this.profileForm.get('Dob').value,this.profileForm.get('Qualifications').value,
+      this.doctorProfile.ImageURL,
+    new AddressClass(this.profileForm.get('address.number').value,this.profileForm.get('address.street').value,
+    this.profileForm.get('address.city').value,this.profileForm.get('address.country').value,
+    this.profileForm.get('address.PinCode').value))).subscribe(data => {
+      this.profileForm.patchValue(data);
+      this.doctorProfile = data;
+    },
+    error => {
+      console.log(error);
+    });
   }
 }

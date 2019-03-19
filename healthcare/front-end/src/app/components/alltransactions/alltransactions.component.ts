@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CommonserviceService } from '../../services/commonservice.service';
 @Component({
   selector: 'app-alltransactions',
   templateUrl: './alltransactions.component.html',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlltransactionsComponent implements OnInit {
 
-  constructor() { }
+  private transactionslist : [];
+  constructor(private commonservice : CommonserviceService) { }
 
   ngOnInit() {
+    this.commonservice.getHistoricalTransactions().subscribe(
+      data => {
+        this.transactionslist = data;
+        console.log(this.transactionslist);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    
   }
 
 }

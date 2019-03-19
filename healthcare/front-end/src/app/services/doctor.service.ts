@@ -50,8 +50,14 @@ export class DoctorService {
       .pipe(catchError(this.errorHandler));
   }
 
-  addnewDoctorProfile(doctorprofile : any): Observable<DoctorProfile>{
+  updateDoctorProfile(id : string, doctorprofile: any):Observable<DoctorProfile>{
     console.log(doctorprofile);
+    return this.http.put<DoctorProfile>(this.doctorProfileURL+"/"+id,doctorprofile,{
+      params : new HttpParams().set('filter',JSON.stringify({include:'resolve'}))
+    }).pipe(catchError(this.errorHandler));
+  }
+
+  addnewDoctorProfile(doctorprofile : any): Observable<DoctorProfile>{
     return this.http.post<DoctorProfile>(this.doctorProfileURL, doctorprofile, this.httpOptions)
     .pipe(catchError(this.errorHandler));
   }
