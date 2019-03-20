@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../../services/doctor.service'
 import { DoctorID, DoctorProfileClass, AddressClass } from '../../interfaces/doctor';
+import { PatientClass, PatientProfileClass } from '../../interfaces/patient';
+import { PatientService } from '../../services/patient.service';
 
 
 @Component({
@@ -10,7 +12,8 @@ import { DoctorID, DoctorProfileClass, AddressClass } from '../../interfaces/doc
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _doctorservice : DoctorService) { }
+  constructor(private _doctorservice : DoctorService, 
+    private _patientservice: PatientService) { }
 
   ngOnInit() {
     //this._doctorservice.getAllDoctorIDs().subscribe(data => console.log(data));
@@ -47,4 +50,27 @@ export class HomeComponent implements OnInit {
     .subscribe(data => console.log(data), error => console.log(error));
   }
 
+  AddnewPatientProfile(){
+    this._patientservice.AddPatientProfile(new PatientProfileClass(
+    "Sundar Pichai","resource:org.example.healthcare.Patient#Sundar Pichai",
+    "Sundar","Pichai","sundarpichai@gmail.com",10101997,
+    new AddressClass("D-6 Room No:39","Vishrambag","Sangli","India","416415")  
+    )).subscribe(data => {
+      console.log(data);
+    }, error => { console.log(error); })
+  }
+
+  AddNewPatientIDs(){
+    this._patientservice.AddPatient(new PatientClass("Sundar Pichai",["Vinit Mahajan"],"Male","40"))
+    .subscribe(data => {console.log(data);},error => {console.log(error);});
+    this._patientservice.AddPatient(new PatientClass("Satya Nadella",["Vinit Mahajan"],"Male","44"))
+    .subscribe(data => {console.log(data);},error => {console.log(error);});
+    
+    this._patientservice.AddPatient(new PatientClass("Elon Musk",["Vinit Mahajan"],"Male","42"))
+    .subscribe(data => {console.log(data);},error => {console.log(error);});
+    
+    this._patientservice.AddPatient(new PatientClass("Narendra Modi",["Vinit Mahajan"],"Male","65"))
+    .subscribe(data => {console.log(data);},error => {console.log(error);});
+    
+  }
 }

@@ -69,6 +69,7 @@ export class DoctorprofileComponent implements OnInit {
     this.profileForm.get('address.PinCode').value))).subscribe(data => {
       this.profileForm.patchValue(data);
       this.doctorProfile = data;
+      console.log(data);
     },
     error => {
       console.log(error);

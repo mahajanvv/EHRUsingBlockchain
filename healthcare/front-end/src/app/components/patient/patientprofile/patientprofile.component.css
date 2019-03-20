@@ -1,0 +1,32 @@
+.mat-form-field{
+    margin: 5px;
+}
+#save{
+
+    margin: 15px;
+    position: relative;
+}
+.example-form {
+    min-width: 60%;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 380px;
+  }
+  .example-half-width {
+    width: 200px;
+  }
+  img{
+      height: 200px;
+      width: 200px;
+  }
+  .col{
+      margin: 5px;
+  }
+
+  .example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }

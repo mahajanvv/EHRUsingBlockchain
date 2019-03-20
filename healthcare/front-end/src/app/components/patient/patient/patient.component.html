@@ -1,33 +1,38 @@
-<mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <!--<mat-icon id="close" (click)="ontoggle(drawer)">close</mat-icon>-->
-          <mat-nav-list>
-            <mat-list-item routerLink="/">
+<mat-drawer-container class="example-container" autosize >
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <!--<mat-icon id="close" (click)="ontoggle(drawer)">close</mat-icon>-->
+      <mat-toolbar color="primary">Menu</mat-toolbar>
+        <mat-nav-list>
+          <mat-list-item routerLink="/">
                 <mat-icon>home</mat-icon> Home
-            </mat-list-item>
-            <mat-list-item routerLink="/patient/profile">
-                <mat-icon>person</mat-icon> Profile
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon>list</mat-icon> Doctors List
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon>note</mat-icon> Medical Records
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon>notifications</mat-icon> Notifications
-            </mat-list-item>
-          </mat-nav-list>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-     <button  type="button" id="menu" mat-button (click)="ontoggle(drawer)"> <mat-icon>menu</mat-icon>
-        Menu
-      </button>
-    </div>
-    <mat-card style="margin:10%;text-align: center;">
-      <mat-card-title>Hey Patient How u r feeling now</mat-card-title>
-    </mat-card>
+          </mat-list-item>
+          <mat-list-item routerLink="/patient/profile" routerLinkActive="active-list-item">
+              <mat-icon>person</mat-icon> Profile
+          </mat-list-item>
+          <!--<mat-list-item routerLink="/doctor/doctorlist" routerLinkActive="active-list-item">
+            <mat-icon>list</mat-icon> Doctors List
+          </mat-list-item>
+          <mat-list-item routerLink="/doctor/medicalrecords" routerLinkActive="active-list-item">
+              <mat-icon>note</mat-icon> Medical Records
+          </mat-list-item>-->
+          <mat-list-item routerLink="/patient/alltransactions" routerLinkActive="active-list-item">
+            <mat-icon>payment</mat-icon> All transactions
+          </mat-list-item>
+        <!--<mat-list-item routerLink="/doctor/doctortransactions" routerLinkActive="active-list-item">
+          <mat-icon>payment</mat-icon> Your Transactions
+        </mat-list-item>-->
+        <mat-list-item routerLink="/patient/notifications" routerLinkActive="active-list-item">
+            <mat-icon>notifications</mat-icon> Notifications
+        </mat-list-item>
+        </mat-nav-list>
+  </mat-drawer>
+  <mat-toolbar style="position:fixed;z-index:2;" color="primary"><div class="example-sidenav-content">
+    <button  type="button" id="menu" mat-icon-button (click)="ontoggle(drawer)"> <mat-icon>menu</mat-icon></button>
+    </div> 
+  <span>MediPac</span></mat-toolbar>
+  <div style="padding-top:4em;padding-bottom:4em;">
     <router-outlet></router-outlet>
-  </mat-drawer-container>
-  
+  </div>
+
+
+</mat-drawer-container>

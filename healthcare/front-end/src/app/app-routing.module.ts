@@ -27,7 +27,8 @@ const routes: Routes = [
   { path : 'patient', component : PatientComponent,
   children : [
     { path: '', redirectTo :'/patient/profile', pathMatch : 'full'},
-    {path: 'profile', component : PatientprofileComponent}
+    { path: 'profile', component : PatientprofileComponent},
+    { path: 'alltransactions', component: AlltransactionsComponent}
   ]},
   { path : '**', component:PagenotfoundComponent}
 ];
