@@ -50,6 +50,12 @@ export class PatientService {
     return this.http.post<PatientProfile>(this.patientProfileURL,patientprofile, this.HttpOptions)
     .pipe(catchError(this.errorHandler));
   }
+
+  UpdatePatient(patientID : string, patient: PatientClass){
+    return this.http.put(this.patientURL+"/"+patientID, patient, this.HttpOptions)
+    .pipe(catchError(this.errorHandler));
+  }
+
   UpdatePatientProfile(patientID : string,patientprofile : PatientProfileClass){
     return this.http.put(this.patientProfileURL+"/"+patientID, patientprofile, 
     this.HttpOptions)
