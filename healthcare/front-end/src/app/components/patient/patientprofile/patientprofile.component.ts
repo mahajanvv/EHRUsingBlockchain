@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { PatientProfile, PatientProfileClass, AddressClass, PatientClass } from '../../../interfaces/patient';
+import { Patient, Address, AddressClass, PatientClass } from '../../../interfaces/patient';
 import { PatientService } from '../../../services/patient.service';
 
 @Component({
@@ -10,32 +10,42 @@ import { PatientService } from '../../../services/patient.service';
 })
 export class PatientprofileComponent implements OnInit {
 
-  private patientprofile : PatientProfile;
+  private patientprofile : Patient;
 
   private Genders : string [] = ["Male","Female","Other"];
 
   profileForm = new FormGroup({
-    firstName : new FormControl(''),
-    lastName : new FormControl(''),
+    FirstName : new FormControl(''),
+    LastName : new FormControl(''),
     EmailAddress : new FormControl(''),
     Dob : new FormControl(''),
-    Patient : new FormGroup({
-      gender : new FormControl(''),
-      age : new FormControl('')
-    }),
+    Phone: new FormControl(''),
+    age: new FormControl(''),
+    gender: new FormControl(''),
     address : new FormGroup({
       number : new FormControl(''),
       street : new FormControl(''),
       city : new FormControl(''),
       country : new FormControl(''),
-      PinCode : new FormControl('')
+      pincode : new FormControl('')
     })
   });
 
   constructor( private _patientService : PatientService) { }
 
   ngOnInit() {
+    this._patientService.getPatientByID(this._patientService.getUserName())
+    .subscribe(data=>{
+      this.patientprofile = data;
+      this.profileForm.patchValue(data);
+      if(this.patientprofile.ImageURL==""){
+        this.patientprofile.ImageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBshi_KRgxaUnlwmEFklw7Jyox0vqpbcOiqldGpK6qqQ96rHxY";
+      }
+    }, error=>{
+      console.log(error);
+    });
 
+    /*
     this._patientService.getPatientProfileByID(this._patientService.getUserName()).subscribe(data => {
       this.profileForm.patchValue(data);
       this.patientprofile = data;
@@ -43,10 +53,30 @@ export class PatientprofileComponent implements OnInit {
     },
     error => {
       console.log(error);
-    });
+    });*/
   }
 
   onSubmit(){
+
+    this._patientService.updatePatient(this.patientprofile.UserId, 
+      new PatientClass(this.patientprofile.UserId, this.profileForm.get('FirstName').value,
+      this.profileForm.get('LastName').value, this.profileForm.get('EmailAddress').value,
+      this.profileForm.get('Phone').value, this.profileForm.get('Dob').value, 
+      this.patientprofile.ImageURL, new AddressClass(
+        this.profileForm.get('address.number').value, this.profileForm.get('address.street').value,
+        this.profileForm.get('address.city').value, this.profileForm.get('address.country').value,
+        this.profileForm.get('address.pincode').value
+      ), this.patientprofile.authorized, this.profileForm.get('gender').value,
+      this.profileForm.get('age').value))
+      .subscribe(data=>{
+        this.patientprofile = data;
+        this.profileForm.patchValue(data);
+        console.log(this.patientprofile);
+      }, error=>{
+        console.log(error);
+      });
+
+    /*
     this._patientService.UpdatePatientProfile(this.patientprofile.profile_id, 
       new PatientProfileClass(this.patientprofile.profile_id,
          "resource:org.example.healthcare.Patient#"+this.patientprofile.profile_id,
@@ -80,7 +110,7 @@ export class PatientprofileComponent implements OnInit {
         error=>{
           console.log(error);
         }
-      )
+      )*/
   }
 
 }

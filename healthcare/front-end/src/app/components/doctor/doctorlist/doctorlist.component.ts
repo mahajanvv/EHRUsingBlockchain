@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../../../services/doctor.service';
-import { DoctorID, DoctorProfile, Address } from '../../../interfaces/doctor';
+import { Doctor, Address } from '../../../interfaces/doctor';
 @Component({
   selector: 'app-doctorlist',
   templateUrl: './doctorlist.component.html',
@@ -10,15 +10,19 @@ export class DoctorlistComponent implements OnInit {
 
 
 
-  private doctorslist : DoctorProfile[];
+  private doctorslist : Doctor[];
 
   constructor(private doctorService: DoctorService) { }
 
   ngOnInit() {
-    this.doctorService.getAllDoctorProfile().subscribe(data =>{
-      this.doctorslist = data;
-      console.log(this.doctorslist);
-    },error => {console.log(error)});
+    this.doctorService.getAllDoctors().subscribe(
+      data => {
+        this.doctorslist = data;
+        console.log(this.doctorslist);
+      },
+      error => {
+        console.log(error);
+      });
   }
 
 }

@@ -1,0 +1,29 @@
+/**
+ * Access control rules for tutorial-network
+ */
+
+
+
+rule Patients {
+  description: "Not Allow Patients to write medical records"
+  participant: "org.example.healthcare.Patient"
+  operation: CREATE, UPDATE, DELETE
+  resource: "org.example.healthcare.MedicalRecord"
+  action: DENY
+}
+
+rule NetworkAdminAccessToUserDefinedNetwork {
+  description : "Allow NetworkAdmin to access the resources of USER network"
+  participant : "org.hyperledger.composer.system.NetworkAdmin"
+  operation : ALL
+  resource : "**"
+  action ALLOW
+}
+
+rule NetworkAdminAccessTotheSystemNetwork {
+  description : "Allow NetworkAdmin to access the system network"
+  participant : "org.hyperledger.composer.system.NetworkAdmin"
+  operation : ALL
+  resource : "org.hyperledger.composer.system.**"
+  action : ALLOW
+}

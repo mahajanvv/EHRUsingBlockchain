@@ -1,10 +1,16 @@
-
 export interface Patient{
-    $class: string,
-    PatientId: string,
-    authorized: string[],
-    gender: string,
-    age: string
+    $class : string,
+    UserId : string,
+    FirstName : string,
+    LastName: string,
+    EmailAddress : string,
+    Phone : string,
+    Dob : string,
+    ImageURL : string,
+    address : Address,
+    authorized : string[],
+    gender : string,
+    age : string
 }
 
 export interface Address{
@@ -14,31 +20,36 @@ export interface Address{
     street: string,
     city: string,
     country: string,
-    PinCode: string
-}
-
-export interface PatientProfile{
-    $class: string,
-    profile_id: string,
-    Patient: Patient,
-    firstName: string,
-    lastName: string,
-    EmailAddress: string,
-    Dob: number,
-    address: Address
+    pincode: string
 }
 
 export class PatientClass implements Patient{
-    $class: string = "org.example.healthcare.Patient";
-    PatientId: string;
-    authorized: string[];
-    gender: string;
-    age: string;
-    constructor(PatientID:string, authorized : string[], gender: string, age: string){
-        this.PatientId = PatientID;
+    $class : string = "org.example.healthcare.Patient";
+    UserId : string;
+    FirstName : string;
+    LastName: string;
+    EmailAddress : string;
+    Phone : string;
+    Dob : string;
+    ImageURL : string;
+    address : Address;
+    authorized : string[];
+    gender : string;
+    age : string;
+    constructor(UserId: string, FirstName: string, LastName: string, EmailAddress : string,
+         Phone: string, Dob : string, ImageURL : string, address : Address,
+          authorized : string[], gender : string, age : string){
+        this.UserId = UserId;
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.EmailAddress = EmailAddress;
+        this.Phone = Phone;
+        this.Dob = Dob;
+        this.ImageURL = ImageURL;
+        this.address = address;
         this.authorized = authorized;
         this.gender = gender;
-        this.age  = age;
+        this.age = age;
     }
 }
 
@@ -48,33 +59,13 @@ export class AddressClass implements Address{
     street: string;
     city: string;
     country: string;
-    PinCode: string;
-    constructor(number: string, street : string, city: string, country: string, Pincode: string){
+    pincode: string;
+    constructor(number: string, street : string, city: string, country: string, pincode: string){
         this.number = number;
         this.street = street;
         this.city = city;
         this.country = country;
-        this.PinCode = Pincode;
+        this.pincode = pincode;
     }
 }
 
-export class PatientProfileClass{
-    $class: string = "org.example.healthcare.Patient_profile";
-    profile_id: string;
-    Patient: string;
-    firstName: string;
-    lastName: string;
-    EmailAddress: string;
-    Dob: number;
-    address: Address;
-    constructor(profile_id: string, Patient: string, firstName: string, lastName : string, 
-        EmailAddress : string, Dob : number, address : Address){
-            this.profile_id = profile_id;
-            this.Patient = Patient;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.EmailAddress = EmailAddress;
-            this.Dob = Dob;
-            this.address  = address;
-    }
-}

@@ -2,12 +2,12 @@
 <div class="row">
   <div class="col">
     <mat-card class="example-card" style="width:400px;">
-        <img mat-card-image class="mx-auto d-block rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBshi_KRgxaUnlwmEFklw7Jyox0vqpbcOiqldGpK6qqQ96rHxY"  alt="Photo of a Shiba Inu">
+        <img mat-card-image class="mx-auto d-block rounded-circle" [src]="patientprofile.ImageURL"  alt="Photo of a Shiba Inu">
         <mat-card-content>
-          <h3>Your ID:{{patientprofile.profile_id}}</h3>
+          <h3>Your ID:{{patientprofile.UserId}}</h3>
         </mat-card-content>
         <mat-list dense>Doctors whom you are consulting:
-            <mat-list-item *ngFor="let authority of patientprofile.Patient.authorized">
+            <mat-list-item *ngFor="let authority of patientprofile.authorized">
               Dr. {{authority}}
             </mat-list-item>
         </mat-list>
@@ -16,19 +16,19 @@
   <div class="col">
     <mat-form-field appearance="outline" class="example-half-width">
         <mat-label>FirstName</mat-label>
-        <input matInput placeholder="FirstName" formControlName="firstName">
+        <input matInput placeholder="FirstName" formControlName="FirstName">
         <mat-icon matSuffix>person</mat-icon>
       <!--<mat-hint>FirstName</mat-hint>-->
     </mat-form-field>
     <mat-form-field appearance="outline" class="example-half-width">
       <mat-label>LastName</mat-label>
-      <input matInput placeholder="LastName" formControlName="lastName">
+      <input matInput placeholder="LastName" formControlName="LastName">
       <mat-icon matSuffix>person</mat-icon>
     <!--<mat-hint>FirstName</mat-hint>-->
     </mat-form-field>      
     <mat-form-field appearance="outline" class="example-half-width">
       <mat-label>PhoneNumber</mat-label>
-      <input matInput placeholder="PhoneNumber">
+      <input matInput placeholder="PhoneNumber" formControlName="Phone">
       <mat-icon matSuffix>phone</mat-icon>
       <!--<mat-hint>FirstName</mat-hint>-->
     </mat-form-field>
@@ -44,23 +44,23 @@
         <mat-icon matSuffix>email</mat-icon>
         <!--<mat-hint>FirstName</mat-hint>-->
     </mat-form-field>
-    <div formGroupName="Patient">
-      <mat-form-field appearance="outline" class="example-half-width">
-          <mat-label>Age</mat-label>
-          <input matInput placeholder="Age" formControlName="age">
-          <mat-icon matSuffix>person</mat-icon>
-          <!--<mat-hint>FirstName</mat-hint>-->
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="example-half-width">
-          <mat-label>Gender</mat-label>
-          <mat-select formControlName="gender">
-            <mat-option *ngFor="let gender of Genders" [value]="gender">{{gender}}</mat-option>
-          </mat-select>
-          <!--<input matInput placeholder="Gender" formControlName="gender">-->
-          <mat-icon matSuffix>wc</mat-icon>
-          <!--<mat-hint>FirstName</mat-hint>-->
-      </mat-form-field>
-    </div>
+    
+    <mat-form-field appearance="outline" class="example-half-width">
+        <mat-label>Age</mat-label>
+        <input matInput placeholder="Age" formControlName="age">
+        <mat-icon matSuffix>person</mat-icon>
+        <!--<mat-hint>FirstName</mat-hint>-->
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-half-width">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option *ngFor="let gender of Genders" [value]="gender">{{gender}}</mat-option>
+        </mat-select>
+        <!--<input matInput placeholder="Gender" formControlName="gender">-->
+        <mat-icon matSuffix>wc</mat-icon>
+        <!--<mat-hint>FirstName</mat-hint>-->
+    </mat-form-field>
+    
     
     <button id="save" mat-raised-button color="primary"><mat-icon>save</mat-icon> SAVE </button>
 
@@ -95,7 +95,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline" class="example-half-width">
         <mat-label>Pincode</mat-label>
-        <input matInput placeholder="Pincode" formControlName="PinCode">
+        <input matInput placeholder="Pincode" formControlName="pincode">
         <mat-icon matSuffix>location_city</mat-icon>
         <!--<mat-hint>FirstName</mat-hint>-->
     </mat-form-field>

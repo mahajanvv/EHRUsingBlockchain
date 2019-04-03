@@ -8,8 +8,8 @@
             <mat-card class="example-card" >
               <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>Name : Dr. {{doctor.firstName+" "+doctor.lastName}}</mat-card-title>
-                <mat-card-subtitle>DoctorId : {{doctor.Doctor.DoctorId}}</mat-card-subtitle>
+                <mat-card-title>Name : Dr. {{doctor.FirstName+" "+doctor.LastName}}</mat-card-title>
+                <mat-card-subtitle>DoctorId : {{doctor.UserId}}</mat-card-subtitle>
                 <mat-card-subtitle>Email Address : {{doctor.EmailAddress}}</mat-card-subtitle>
                 <mat-card-subtitle>Date of birth : {{doctor.Dob}}</mat-card-subtitle>
               </mat-card-header>
@@ -24,7 +24,7 @@
                   <p>
                     Address : {{doctor.address.number+", "+doctor.address.street+", "+
                                 doctor.address.city+", "+doctor.address.country+", " +
-                                doctor.address.PinCode}}.
+                                doctor.address.pincode}}.
                   </p>
               </mat-card-content>
             </mat-card>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { doctorID, DoctorProfile, Address } from '../interfaces/doctor';
+import { Doctor, DoctorClass ,Address } from '../interfaces/doctor';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -11,8 +11,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class DoctorService {
 
-  private doctorIDURL : string = "http://localhost:3000/api/Doctor";
-  private doctorProfileURL : string = "http://localhost:3000/api/Doctor_profile";
+  private doctorURL : string = "http://localhost:3000/api/Doctor";
   private username : string;
 
   private httpOptions = {
@@ -29,36 +28,27 @@ export class DoctorService {
     return this.username;
   }
 
-  getAllDoctorIDs(): Observable<doctorID[]>{
-    return this.http.get<doctorID[]>(this.doctorIDURL).pipe(
+  getAllDoctors(): Observable<Doctor[]>{
+    return this.http.get<Doctor[]>(this.doctorURL).pipe(
       catchError(this.errorHandler)
     );
   }
-  getAllDoctorProfile(): Observable<DoctorProfile[]>{
-    return this.http.get<DoctorProfile[]>(this.doctorProfileURL,{params:new HttpParams().set('filter',JSON.stringify({include:'resolve'}))})
-    .pipe(catchError(this.errorHandler));
-  }
-  getDoctorProfileByID(id : string):Observable<DoctorProfile>{
-    return this.http.get<DoctorProfile>(this.doctorProfileURL+"/"+id, 
+
+  getDoctorByID(id : string):Observable<Doctor>{
+    return this.http.get<Doctor>(this.doctorURL+"/"+id, 
     {params:new HttpParams().set('filter',JSON.stringify({include:'resolve'}))})
     .pipe(catchError(this.errorHandler));
   }
 
-  addnewDoctor(DoctorID : doctorID): Observable<doctorID>{
-      
-      return this.http.post<doctorID>(this.doctorIDURL, DoctorID, this.httpOptions)
-      .pipe(catchError(this.errorHandler));
-  }
-
-  updateDoctorProfile(id : string, doctorprofile: any):Observable<DoctorProfile>{
-    console.log(doctorprofile);
-    return this.http.put<DoctorProfile>(this.doctorProfileURL+"/"+id,doctorprofile,
-    this.httpOptions).pipe(catchError(this.errorHandler));
-  }
-
-  addnewDoctorProfile(doctorprofile : any): Observable<DoctorProfile>{
-    return this.http.post<DoctorProfile>(this.doctorProfileURL, doctorprofile, this.httpOptions)
+  addnewDoctor(doctor : Doctor): Observable<Doctor>{
+    return this.http.post<Doctor>(this.doctorURL, doctor, this.httpOptions)
     .pipe(catchError(this.errorHandler));
+  }
+
+  updateDoctor(id : string, doctorprofile: any):Observable<Doctor>{
+    console.log(doctorprofile);
+    return this.http.put<Doctor>(this.doctorURL+"/"+id,doctorprofile,
+    this.httpOptions).pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error : HttpErrorResponse){

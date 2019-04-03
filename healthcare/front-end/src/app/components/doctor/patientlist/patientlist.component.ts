@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientClass, PatientProfile } from 'src/app/interfaces/patient';
+import { Patient } from 'src/app/interfaces/patient';
 import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
@@ -9,17 +9,17 @@ import { PatientService } from 'src/app/services/patient.service';
 })
 export class PatientlistComponent implements OnInit {
 
-  private patientslist : PatientProfile[];
+  private patientslist : Patient[];
 
   constructor(private _patientService: PatientService) { }
 
   ngOnInit() {
-    this._patientService.getAllPatientsProfile().subscribe(
-      data => {this.patientslist  = data;
-      console.log(this.patientslist);
-    },
-      error => {console.log(error);}
-    ); 
+    this._patientService.getAllPatients().subscribe(data=>{
+      this.patientslist = data;
+      console.log(data);
+    },error=>{
+      console.log(error);
+    });
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { DoctorProfile, DoctorProfileClass, AddressClass} from '../../../interfaces/doctor';
+import { Doctor, DoctorClass, AddressClass} from '../../../interfaces/doctor';
 import { DoctorService } from '../../../services/doctor.service';
+import { MatSnackBar } from '@angular/material';
+import { config } from 'rxjs';
 
 @Component({
   selector: 'app-doctorprofile',
@@ -9,7 +11,7 @@ import { DoctorService } from '../../../services/doctor.service';
   styleUrls: ['./doctorprofile.component.css']
 })
 export class DoctorprofileComponent implements OnInit {  
-  private doctorProfile : DoctorProfile;
+  private doctorProfile : Doctor;
 
   qualificationsList : string [] = ['Doctor of Medicine by research (MD(Res), DM)',
 'Doctor of Philosophy (PhD, DPhil)', 'Master of Clinical Medicine (MCM)',
@@ -22,9 +24,10 @@ export class DoctorprofileComponent implements OnInit {
   
 
   profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    FirstName: new FormControl(''),
+    LastName: new FormControl(''),
     EmailAddress: new FormControl(''),
+    Phone: new FormControl(''),
     Qualifications : new FormControl(),
     Dob: new FormControl(''),
     address: new FormGroup({
@@ -32,20 +35,29 @@ export class DoctorprofileComponent implements OnInit {
       street: new FormControl(''),
       city: new FormControl(''),
       country: new FormControl(''),
-      PinCode: new FormControl('')
+      pincode: new FormControl('')
     })
   });
 
-  constructor(private doctorService : DoctorService) {
+  constructor(private doctorService : DoctorService, private snackBar: MatSnackBar) {
     
   }
   
   ngOnInit() {
-    this.doctorService.getDoctorProfileByID("Vinit Mahajan").subscribe(data => {
-      this.profileForm.patchValue(data);
-      this.doctorProfile = data;
-      console.log(this.doctorProfile);
-    });
+    this.doctorService.getDoctorByID(this.doctorService.getUserName()).subscribe(
+      data => {
+        this.profileForm.patchValue(data);
+        this.doctorProfile = data;
+        if(this.doctorProfile.ImageURL==""){
+          this.doctorProfile.ImageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBshi_KRgxaUnlwmEFklw7Jyox0vqpbcOiqldGpK6qqQ96rHxY";
+        }
+        console.log(this.doctorProfile);
+      }, error =>{
+        console.log(error);
+        this.snackBar.open("Error Occured", "close",{
+          duration : 5000,
+        })
+      });
     /*this.profileForm.patchValue({firstName:"Wayne", lastName : "Mahajan",
    Qualifications: ['Doctor of Medicine by research (MD(Res), DM)',
    'Doctor of Philosophy (PhD, DPhil)', 'Master of Clinical Medicine (MCM)']});*/
@@ -58,21 +70,27 @@ export class DoctorprofileComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     
-    this.doctorService.updateDoctorProfile(this.doctorProfile.profile_id, 
-      new DoctorProfileClass(this.doctorProfile.profile_id,"resource:org.example.healthcare.Doctor#"
-      +this.doctorProfile.profile_id,this.profileForm.get('firstName').value,
-      this.profileForm.get('lastName').value,this.profileForm.get('EmailAddress').value,
-      +this.profileForm.get('Dob').value,this.profileForm.get('Qualifications').value,
-      this.doctorProfile.ImageURL,
-    new AddressClass(this.profileForm.get('address.number').value,this.profileForm.get('address.street').value,
+    this.doctorService.updateDoctor(this.doctorProfile.UserId, 
+      new DoctorClass(this.doctorProfile.UserId, this.profileForm.get('FirstName').value, 
+      this.profileForm.get('LastName').value, this.profileForm.get('EmailAddress').value, 
+      this.profileForm.get('Phone').value, this.profileForm.get('Dob').value, 
+      ""+this.doctorProfile.ImageURL.toString(), 
+      new AddressClass(this.profileForm.get('address.number').value,this.profileForm.get('address.street').value,
     this.profileForm.get('address.city').value,this.profileForm.get('address.country').value,
-    this.profileForm.get('address.PinCode').value))).subscribe(data => {
+    this.profileForm.get('address.pincode').value),
+    this.profileForm.get('Qualifications').value))
+    .subscribe(data => {
       this.profileForm.patchValue(data);
       this.doctorProfile = data;
-      console.log(data);
-    },
-    error => {
+      console.log(this.doctorProfile);
+      this.snackBar.open("Profile Updated Successfully", "close", {
+        duration : 5000,
+      });
+    }, error=>{
       console.log(error);
+      this.snackBar.open("Failed to update the profile", "close", {
+        duration : 5000,
+      });
     });
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { PatientClass, PatientProfileClass, Patient, PatientProfile } from '../interfaces/patient';
+import { PatientClass, Patient, Address } from '../interfaces/patient';
 import { catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 
@@ -9,10 +9,9 @@ import { throwError, Observable } from 'rxjs';
 })
 export class PatientService {
 
-  private username : string = "Sundar Pichai";
-
   private patientURL = "http://localhost:3000/api/Patient";
-  private patientProfileURL = "http://localhost:3000/api/Patient_profile";
+
+  private username : string;
 
   private HttpOptions  = {
     headers : new HttpHeaders({'Content-Type':'application/json'})
@@ -29,9 +28,35 @@ export class PatientService {
   }
 
   getAllPatients(): Observable <Patient[]>{
-    return this.http.get<Patient[]>(this.patientURL);
+    return this.http.get<Patient[]>(this.patientURL).pipe(
+      catchError(this.errorHandler)
+    );
   }
-  getAllPatientsProfile(): Observable<PatientProfile[]>{
+
+  getPatientByID(id: string): Observable<Patient>{
+    return this.http.get<Patient>(this.patientURL+"/"+id).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  addNewPatient(patient : PatientClass): Observable<Patient>{
+    return this.http.post<Patient>(this.patientURL, patient)
+    .pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  updatePatient(id: string, patient: PatientClass): Observable<Patient>{
+    return this.http.put<Patient>(this.patientURL+"/"+id, patient).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  errorHandler(error : HttpErrorResponse){
+    return throwError(error.message || "Server Error");
+  }
+
+/*  getAllPatientsProfile(): Observable<PatientProfile[]>{
     return this.http.get<PatientProfile[]>(this.patientProfileURL, {params: new HttpParams().set('filter',JSON.stringify({include:'resolve'}))});
   }
 
@@ -60,9 +85,7 @@ export class PatientService {
     return this.http.put(this.patientProfileURL+"/"+patientID, patientprofile, 
     this.HttpOptions)
     .pipe(catchError(this.errorHandler));
-  }
+  }*/
 
-  errorHandler(error : HttpErrorResponse){
-    return throwError(error.message || "Server Error");
-  }
+  
 }

@@ -4,7 +4,7 @@
         <mat-card class="example-card" style="width:400px;">
             <img mat-card-image class="mx-auto d-block rounded-circle" [src]="doctorProfile.ImageURL" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <h3>Your ID:{{doctorProfile.profile_id}}</h3>
+              <h3>Your ID:{{doctorProfile.UserId}}</h3>
             </mat-card-content>
             <mat-list dense>Qualifications
                 <mat-list-item *ngFor="let qualifi of doctorProfile.Qualifications">
@@ -16,19 +16,19 @@
     <div class="col">
             <mat-form-field appearance="outline" class="example-half-width">
               <mat-label>FirstName</mat-label>
-              <input matInput placeholder="FirstName" formControlName="firstName">
+              <input matInput placeholder="FirstName" formControlName="FirstName">
               <mat-icon matSuffix>person</mat-icon>
             <!--<mat-hint>FirstName</mat-hint>-->
             </mat-form-field>
             <mat-form-field appearance="outline" class="example-half-width">
               <mat-label>LastName</mat-label>
-              <input matInput placeholder="LastName" formControlName="lastName">
+              <input matInput placeholder="LastName" formControlName="LastName">
               <mat-icon matSuffix>person</mat-icon>
             <!--<mat-hint>FirstName</mat-hint>-->
             </mat-form-field>      
             <mat-form-field appearance="outline" class="example-half-width">
               <mat-label>PhoneNumber</mat-label>
-              <input matInput placeholder="PhoneNumber">
+              <input matInput placeholder="PhoneNumber" formControlName="Phone">
               <mat-icon matSuffix>phone</mat-icon>
               <!--<mat-hint>FirstName</mat-hint>-->
             </mat-form-field>
@@ -89,7 +89,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="example-half-width">
             <mat-label>Pincode</mat-label>
-            <input matInput placeholder="Pincode" formControlName="PinCode">
+            <input matInput placeholder="Pincode" formControlName="pincode">
             <mat-icon matSuffix>location_city</mat-icon>
             <!--<mat-hint>FirstName</mat-hint>-->
         </mat-form-field>
