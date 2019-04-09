@@ -1,0 +1,77 @@
+/**
+ * Access control rules for tutorial-network
+ */
+
+rule DoctorsCantModifyPatientsProfile{
+  description: "Not to allow any doctors to modify the data of patients profile"
+  participant: "org.example.healthcare.Doctor"
+  operation: CREATE, UPDATE, DELETE
+  resource: "org.example.healthcare.Patient"
+  action: DENY
+}
+
+rule AllowDoctorsToAccessToHisPatientsRecord{
+  description: "Allow doctors to access his patients data"
+  participant(p): "org.example.healthcare.Doctor"
+  operation: CREATE
+  resource(r): "org.example.healthcare.MedicalRecord"
+  transaction(tx): "org.example.healthcare.AddnewMedicalRecord"
+  condition: (p.getIdentifier() == r.doctor)
+  action: ALLOW
+}
+
+rule AllowDoctorsToAccessToHisPatientsRecordWithoutTransaction{
+  description: "Allow doctors to access his patients data"
+  participant(p): "org.example.healthcare.Doctor"
+  operation: CREATE
+  resource(r): "org.example.healthcare.MedicalRecord"
+  condition: (p.getIdentifier() == r.doctor)
+  action: DENY
+}
+
+
+rule AllowDoctorsToAccessOnlyResourcesThatHeIsPartOf{
+  description: "Allow doctors to access only those resources that he is part of"
+  participant(p): "org.example.healthcare.Doctor"
+  operation: ALL
+  resource(r): "org.example.healthcare.MedicalRecord"
+  condition: (p.getIdentifier() != r.doctor)
+  action: DENY
+}
+
+rule AllowPatientsToReadMedicalRecords{
+  description: "Allow patients to read the medical records not modify"
+  participant: "org.example.healthcare.Patient"
+  operation: CREATE, UPDATE, DELETE
+  resource: "org.example.healthcare.MedicalRecord"
+  action: DENY
+}
+rule AllowNetworkAdminToSystemNetwork{
+  description: "Allow network admin to all resources on System base network"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}
+rule AllowNetworkAdminToUserDefinedNetwork{
+  description: "Allow network admin to all resources on user defined network"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.example.healthcare.*"
+  action: ALLOW
+}
+rule Default {
+    description: "Allow all participants access to all resources"
+    participant: "ANY"
+    operation: ALL
+    resource: "org.example.healthcare.*"
+    action: ALLOW
+}
+
+rule SystemACL {
+  description: "Allow every one to access the system resources"
+  participant: "ANY"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}
