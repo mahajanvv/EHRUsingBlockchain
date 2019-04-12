@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-2">
+    
+  </div>
+    <div class="col-sm-8">
+        <div class="list-group"> 
+          <mat-card *ngFor="let medicalRecord of medicalRecords" class="example-card list-group-item" style="margin-top:5%">
+            <mat-card-header >
+              <mat-card-title>Record ID:{{medicalRecord.record_id}}</mat-card-title>
+              <mat-card-subtitle>Patient ID:{{medicalRecord.patient}}</mat-card-subtitle>
+              <mat-card-subtitle>Doctor ID:{{medicalRecord.doctor}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+              <mat-list dense>
+                <mat-list-item> 
+                  Description: {{medicalRecord.description}}
+                </mat-list-item>
+                <mat-list-item>
+                  Prescription: {{medicalRecord.prescription}}
+                </mat-list-item>
+                <mat-list-item> 
+                  who can view this Medical Record:
+                </mat-list-item>
+                <mat-list-item *ngFor="let authority of medicalRecord.authorized">
+                  {{authority}}
+                </mat-list-item>                      
+              </mat-list>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-footer>
+              <p style="float:right;margin:1%">Date: {{medicalRecord.encounter_time}}</p>
+            </mat-card-footer>
+          </mat-card>
+        </div>
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>

@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './core/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReadonlyEHRComponent } from './components/doctor/readonly-ehr/readonly-ehr.component';
+import { PatientMedicalRecordsComponent } from './components/patient/patient-medical-records/patient-medical-records.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+    ReadonlyEHRComponent,
+    PatientMedicalRecordsComponent 
   ],
   imports: [
     BrowserModule,
@@ -20,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     CustomMaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

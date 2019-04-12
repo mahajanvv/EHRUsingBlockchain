@@ -1,0 +1,16 @@
+
+  <h1 mat-dialog-title>Add New Medical Record for patient id:{{data.patient}}</h1>
+  <div mat-dialog-content> 
+    <mat-form-field appearance="outline" style="width:100%">
+      <mat-label>Enter Description</mat-label>
+      <input matInput placeholder="description" #description>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width:100%">
+      <mat-label>Enter Prescription</mat-label>
+      <input matInput placeholder="prescription" #prescription>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button  color="primary" (click)="onSubmit(description.value, prescription.value)">Submit <mat-icon>send</mat-icon></button>
+    <button mat-raised-button color="primary" (click)="onCancelClicked()">Cancel<mat-icon>close</mat-icon></button>
+  </div>

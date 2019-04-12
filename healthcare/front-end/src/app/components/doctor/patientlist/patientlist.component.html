@@ -27,6 +27,11 @@
                               patient.address.city+", "+patient.address.country+", " +
                               patient.address.pincode}}.
               </mat-card-subtitle>
+              <mat-divider></mat-divider>
+              <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="ViewMedicalRecords(patient.UserId)"><mat-icon>view_list</mat-icon>View Medical Records</button>
+                <button mat-raised-button color="primary" style="float:right" (click)="openDialog(patient)"><mat-icon>add</mat-icon>Add new Medical Record</button>
+              </mat-card-actions>
             </mat-card-content>
             
           </mat-card>

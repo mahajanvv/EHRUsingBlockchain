@@ -3,6 +3,7 @@ import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular
 import { PatientClass, Patient, Address } from '../interfaces/patient';
 import { catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
+import { MedicalRecord } from '../interfaces/medical';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,11 @@ export class PatientService {
     return this.http.put<Patient>(this.patientURL+"/"+id, patient).pipe(
       catchError(this.errorHandler)
     );
+  }
+
+  getAllMedicalRecords():Observable <MedicalRecord[]>{
+    return this.http.get<MedicalRecord[]>("http://localhost:3000/api/queries/selectMedicalRecordsByPatientId?patientid="+this.username)
+    .pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error : HttpErrorResponse){

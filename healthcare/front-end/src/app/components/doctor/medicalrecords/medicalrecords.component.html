@@ -1,54 +1,70 @@
 <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
       
     </div>
     <div class="col-sm-8">
-      <mat-grid-list cols="1" rowHeight="10:1">
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
+      <div *ngIf="isPatientAvailable(); then thenBlock; else elseBlock"></div>
+      <ng-template #thenBlock>
+          <div class="list-group"> 
+            <mat-card *ngFor="let medicalRecord of medicalRecords" class="example-card list-group-item" style="margin-top:5%">
+              <mat-card-header >
+                <mat-card-title>Record ID:{{medicalRecord.record_id}}</mat-card-title>
+                <mat-card-subtitle>Patient ID:{{medicalRecord.patient}}</mat-card-subtitle>
+                <mat-card-subtitle>Doctor ID:{{medicalRecord.doctor}}</mat-card-subtitle>
               </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <mat-list dense>
+                  <mat-list-item> 
+                    Description: {{medicalRecord.description}}
+                  </mat-list-item>
+                  <mat-list-item>
+                    Prescription: {{medicalRecord.prescription}}
+                  </mat-list-item>
+                  <mat-list-item> 
+                    who can view this Medical Record:
+                  </mat-list-item>
+                  <mat-list-item *ngFor="let authority of medicalRecord.authorized">
+                    {{authority}}
+                  </mat-list-item>                      
+                </mat-list>
+              </mat-card-content>
+              <mat-divider></mat-divider>
+              <mat-card-actions>
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter Doctor Id Here</mat-label>
+                  <input matInput placeholder="Example: Doc1" #doctorname>
+                  <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="AddOtherDoctorToRead(doctorname.value, medicalRecord.record_id)">
+                  Give read only access
+                </button>
+                <button mat-raised-button color="warn" (click)="RemoveDoctorToRead(doctorname.value, medicalRecord.record_id)">
+                  Remove from read only list
+                </button>
+              </mat-card-actions>
+              <mat-divider></mat-divider>
+              <mat-card-footer>
+                <p style="float:right;margin:1%">Date: {{medicalRecord.encounter_time}}</p>
+              </mat-card-footer>
             </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-card class="example-card">
-              <mat-card-header>
-                  
-              </mat-card-header>
-            </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock>
+        <h3 style="text-align:center; margin-top:25%">Please, specify patient id</h3>
+      </ng-template>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
+      <div class="sticky-top" style="position:fixed;margin-top:7%">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter Patient Id</mat-label>
+          <input matInput placeholder="Example: Pat1" #patname>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="fetchrecords(patname.value)">
+            Submit <mat-icon>send</mat-icon>
+        </button>
+      </div>
       
     </div>
   </div>
