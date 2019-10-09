@@ -1,0 +1,16 @@
+{
+    "js|ts|css|scss|less|php|as|c|java|cpp|go|cto|acl": {
+        "prepend": "/*",
+        "append": "*/"
+    },
+    "html|xml": {
+        "prepend": "<!--",
+        "append": "-->" 
+    },
+    "gitignore|npmignore|eslintignore|dockerignore|sh|py": {
+        "eachLine": {
+            "prepend": "# "
+        }
+    },
+    "txt": {}
+}
