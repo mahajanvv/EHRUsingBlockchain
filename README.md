@@ -44,15 +44,15 @@ There are a few useful CLI tools for Composer developers. The most important one
 Note that you **should not** use **su** or **sudo** for the following npm commands.
 Essential CLI tools:
 ```
-npm install -g composer-cli@0.19
+npm install -g composer-cli@0.20
 ```
 Utility for running a REST Server on your machine to expose your business networks as RESTful APIs:
 ```
-npm install -g composer-rest-server@0.19
+npm install -g composer-rest-server@0.20
 ```
 Useful utility for generating application assets:
 ```
-npm install -g generator-hyperledger-composer@0.19
+npm install -g generator-hyperledger-composer@0.20
 ```
 Yeoman is a tool for generating applications, which utilises generator-hyperledger-composer:
 ```
