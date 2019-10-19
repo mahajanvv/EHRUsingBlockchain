@@ -56,6 +56,7 @@ export class PatientlistComponent implements OnInit {
      private _router: Router) { }
 
   ngOnInit() {
+    console.log(this._doctorService.getUserName())
     this._commonService.getPatientsByDoctorId(this._doctorService.getUserName())
     .subscribe(data => {
       this.patientslist = data;

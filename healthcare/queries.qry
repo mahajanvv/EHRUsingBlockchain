@@ -8,7 +8,7 @@ query selectPatientById {
   description: "Select the patient based on their id"
   statement:
       SELECT org.example.healthcare.Patient
-          WHERE (PatientId ==_$PatientId)
+          WHERE (UserId ==_$UserId)
 }
 
 query selectDoctors {
@@ -19,37 +19,96 @@ query selectDoctors {
 
 query selectDoctorById {
    description: "Select the doctor based on their id"
-  statement:
-      SELECT org.example.healthcare.Doctor
-          WHERE (DoctorId ==_$DoctorId)
-}
+   statement:
+       SELECT org.example.healthcare.Doctor
+           WHERE (UserId ==_$UserId)
+ }
 
 query selectMedicalRecordByDoctorId {
    description: "Select the medical records based on the DoctorId"
-  statement:
-      SELECT org.example.healthcare.Medical_Record
-          WHERE ((authorized CONTAINS _$DoctorId )OR (DoctorId ==_$DoctorId ))
-} 
+   statement:
+       SELECT org.example.healthcare.MedicalRecord
+           WHERE ((authorized CONTAINS _$UserId )OR (doctor ==_$UserId ))
+ } 
 
 query selectMedicalRecordByPatientId {
    description: "Select the medical records based on the PatientId"
-  statement:
-      SELECT org.example.healthcare.Medical_Record
-          WHERE ((PatientId ==_$PatientId ))
+   statement:
+       SELECT org.example.healthcare.MedicalRecord
+           WHERE ((patient ==_$UserId ))
+ } 
+
+
+ query selectMedicalRecordByDoctorAndPatientId {
+    description: "Select the medical records based on the DoctorId and PatientId"
+   statement:
+       SELECT org.example.healthcare.MedicalRecord
+           WHERE (((authorized CONTAINS _$DoctorId )OR (doctor ==_$DoctorId )) AND patient == _$PatientId)
+ }
+
+
+ query selectMedicalRecordByDoctorAndPatientIdAndTime {
+   description: "Select the medical records based on the DoctorId and PatientId sorted by time"
+   statement:
+       SELECT org.example.healthcare.MedicalRecord
+           WHERE (doctor ==_$DoctorId AND patient == _$PatientId) ORDER BY encounter_time
 } 
-
-
-query selectMedicalRecordByDoctorAndPatientId {
-   description: "Select the medical records based on the DoctorId and PatientId"
-  statement:
-      SELECT org.example.healthcare.Medical_Record
-          WHERE (((authorized CONTAINS _$DoctorId )OR (DoctorId ==_$DoctorId )) AND PatientId == _$PatientId)
+query selectPatientByDoctorId{
+  description: "Select doctor by patient id"
+   statement:
+       SELECT org.example.healthcare.Patient
+           WHERE (authorized CONTAINS _$DoctorId)
 }
 
 
-query selectMedicalRecordByDoctorAndPatientIdAndTime {
-   description: "Select the medical records based on the DoctorId and PatientId sorted by time"
-  statement:
-      SELECT org.example.healthcare.Medical_Record
-          WHERE (DoctorId ==_$DoctorId AND PatientId == _$PatientId) ORDER BY encounter_time
-} 
+
+// query selectPatients {
+//   description: "Select all Patients"
+//   statement:
+//       SELECT org.example.healthcare.Patient
+// }
+
+// query selectPatientById {
+//   description: "Select the patient based on their id"
+//   statement:
+//       SELECT org.example.healthcare.Patient
+//           WHERE (UserId ==_$UserId)
+// }
+
+
+// query selectDoctorById {
+//    description: "Select the doctor based on their id"
+//   statement:
+//       SELECT org.example.healthcare.Doctor
+//           WHERE (UserId ==_$UserId)
+// }
+
+// query selectMedicalRecordByDoctorId {
+//    description: "Select the medical records based on the DoctorId"
+//   statement:
+//       SELECT org.example.healthcare.Medical_Record
+//           WHERE ((authorized CONTAINS _$UserId )OR (UserId ==_$UserId ))
+// } 
+
+// query selectMedicalRecordByPatientId {
+//    description: "Select the medical records based on the PatientId"
+//   statement:
+//       SELECT org.example.healthcare.Medical_Record
+//           WHERE ((PatientId ==_$PatientId ))
+// } 
+
+
+// query selectMedicalRecordByDoctorAndPatientId {
+//    description: "Select the medical records based on the DoctorId and PatientId"
+//   statement:
+//       SELECT org.example.healthcare.Medical_Record
+//           WHERE (((authorized CONTAINS _$DoctorId )OR (DoctorId ==_$DoctorId )) AND PatientId == _$PatientId)
+// }
+
+
+// query selectMedicalRecordByDoctorAndPatientIdAndTime {
+//    description: "Select the medical records based on the DoctorId and PatientId sorted by time"
+//   statement:
+//       SELECT org.example.healthcare.Medical_Record
+//           WHERE (DoctorId ==_$DoctorId AND PatientId == _$PatientId) ORDER BY encounter_time
+// } 

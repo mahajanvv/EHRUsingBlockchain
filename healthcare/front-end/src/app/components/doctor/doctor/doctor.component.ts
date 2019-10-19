@@ -9,7 +9,7 @@ import { DoctorService } from '../../../services/doctor.service';
 export class DoctorComponent implements OnInit {
 
   constructor(private doctorService: DoctorService) { 
-    this.doctorService.setUserName("Doc1");
+     this.doctorService.setUserName("Doc1");
    }
 
   ngOnInit() {

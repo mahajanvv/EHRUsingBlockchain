@@ -4,6 +4,8 @@ import { PatientClass, Patient, Address } from '../interfaces/patient';
 import { catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { MedicalRecord } from '../interfaces/medical';
+import { Doctor, DoctorClass } from '../interfaces/doctor';
+import { DoctorService } from './doctor.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +16,13 @@ export class PatientService {
 
   private username : string;
 
+  private doctorsList : Doctor[];
+
   private HttpOptions  = {
     headers : new HttpHeaders({'Content-Type':'application/json'})
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _doctorService: DoctorService) { }
 
   setUserName(name: string){
     this.username = name;
@@ -40,6 +44,17 @@ export class PatientService {
     );
   }
 
+  getMyDoctors(){
+    this.getPatientByID(this.username).subscribe(data =>{
+      data.authorized.forEach((value)=>{
+        this._doctorService.getDoctorByID(value).subscribe((value)=>{
+          this.doctorsList.push(value);
+        })
+      })
+
+    })
+  }
+
   addNewPatient(patient : PatientClass): Observable<Patient>{
     return this.http.post<Patient>(this.patientURL, patient)
     .pipe(
@@ -54,7 +69,7 @@ export class PatientService {
   }
 
   getAllMedicalRecords():Observable <MedicalRecord[]>{
-    return this.http.get<MedicalRecord[]>("http://localhost:3000/api/queries/selectMedicalRecordsByPatientId?patientid="+this.username)
+    return this.http.get<MedicalRecord[]>("http://localhost:3000/api/queries/selectMedicalRecordByPatientId?UserId="+this.username)
     .pipe(catchError(this.errorHandler));
   }
 

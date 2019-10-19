@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ReadonlyEHRComponent } from './components/doctor/readonly-ehr/readonly-ehr.component';
 import { PatientMedicalRecordsComponent } from './components/patient/patient-medical-records/patient-medical-records.component';
+import { MydoctorsComponent } from './components/patient/mydoctors/mydoctors.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PatientMedicalRecordsComponent } from './components/patient/patient-med
     AppComponent,
     routingComponents,
     ReadonlyEHRComponent,
-    PatientMedicalRecordsComponent 
+    PatientMedicalRecordsComponent,
+    MydoctorsComponent 
   ],
   imports: [
     BrowserModule,

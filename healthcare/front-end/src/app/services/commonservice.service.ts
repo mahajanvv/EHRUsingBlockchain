@@ -20,13 +20,13 @@ export class CommonserviceService {
   }
 
   getPatientsByDoctorId(id : string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(this.queriesURL+"/SelectPatientByDoctorId?doctorId="+id)
+    return this.http.get<Patient[]>(this.queriesURL+"/selectPatientByDoctorId?DoctorId="+id)
     .pipe(catchError(this.ErrorHandler))
   }
 
   getMedicalRecordsByDoctorAndPatientIds(doctorId: string, patientId: string): Observable<MedicalRecord[]>{
-    return this.http.get<MedicalRecord[]>("http://localhost:3000/api/queries/selectMedicalRecordsByDoctorIdAndPatientId?patientid="+
-    patientId+"&doctorid="+doctorId).
+    return this.http.get<MedicalRecord[]>("http://localhost:3000/api/queries/selectMedicalRecordByDoctorAndPatientId?DoctorId="+
+    doctorId+"&PatientId="+patientId).
     pipe(catchError(this.ErrorHandler));
   }
 
