@@ -13,6 +13,7 @@ import { AlltransactionsComponent } from './components/alltransactions/alltransa
 import { DoctortransactionsComponent } from './components/doctor/doctortransactions/doctortransactions.component';
 import { ReadonlyEHRComponent } from './components/doctor/readonly-ehr/readonly-ehr.component';
 import { PatientMedicalRecordsComponent } from './components/patient/patient-medical-records/patient-medical-records.component';
+import { MydoctorsComponent } from './components/patient/mydoctors/mydoctors.component';
 
 const routes: Routes = [
   { path : '', component:HomeComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
     { path: '', redirectTo :'/patient/profile', pathMatch : 'full'},
     { path: 'profile', component : PatientprofileComponent},
     { path: 'alltransactions', component: AlltransactionsComponent},
+    { path: 'mydoctors', component: MydoctorsComponent},
     { path: 'medicalrecords', component : PatientMedicalRecordsComponent}
   ]},
   { path : '**', component:PagenotfoundComponent}
@@ -44,4 +46,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents = [HomeComponent, DoctorprofileComponent, PatientprofileComponent, 
 DoctorComponent, PatientComponent, PagenotfoundComponent, MedicalrecordsComponent, PatientlistComponent
-, DoctorlistComponent, AlltransactionsComponent, DoctortransactionsComponent];
+, DoctorlistComponent, AlltransactionsComponent, DoctortransactionsComponent, MydoctorsComponent];
